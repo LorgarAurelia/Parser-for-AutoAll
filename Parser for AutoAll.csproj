@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>Parser_for_AutoAll</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Core\JSON\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.36" />
+  </ItemGroup>
+
+</Project>
