@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Parser_for_AutoAll.Core.Parser;
+using System;
+using System.Collections.Generic;
 
 namespace Parser_for_AutoAll
 {
-    class DataToTransfer 
+    class DataToTransfer
     {
         public List<string> name;
         public List<string> aricle;
@@ -18,17 +18,19 @@ namespace Parser_for_AutoAll
     {
         static void Main(string[] args)
         {
-            
+
             var parser = new HtmlParser();
-            DataToTransfer data = new DataToTransfer();
+
+            var data = new DataToTransfer();
+
             parser.ParseHtml();
 
             for (int i = 0; i < parser.name.Count; i++)
             {
                 Console.WriteLine("Название позиции: " + parser.name[i]);
                 Console.WriteLine("Артикул:" + parser.article[i]);
-                Console.WriteLine("Код заказа "+parser.orderCode[i]);
-                Console.WriteLine("Производитель:"+ parser.vendor[i]);
+                Console.WriteLine("Код заказа " + parser.orderCode[i]);
+                Console.WriteLine("Производитель:" + parser.vendor[i]);
                 Console.WriteLine("Цена:\t" + parser.price[i]);
             }
 

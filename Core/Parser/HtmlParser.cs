@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Parser_for_AutoAll.Core.Parser
 {
@@ -16,15 +14,15 @@ namespace Parser_for_AutoAll.Core.Parser
         public List<string> orderCode = new List<string>();
         public List<string> vendor = new List<string>();
         public List<string> price = new List<string>();
-        public void ParseHtml() 
+        public void ParseHtml()
         {
             var html = ConnectionToSite();
 
             HtmlAgilityPack.HtmlDocument document = new HtmlAgilityPack.HtmlDocument();
             if (!string.IsNullOrEmpty(html))
                 document.LoadHtml(html);
-            else 
-            { 
+            else
+            {
                 Console.WriteLine(errorOfEmptyHtml);
                 Environment.Exit(0);
             }
@@ -43,20 +41,20 @@ namespace Parser_for_AutoAll.Core.Parser
 
                 var articleNod = item.SelectSingleNode(".//div[@class='decr']//div//div[@class='info']//b");
                 string articleToTrim = articleNod.InnerText;
-                articleToTrim = articleToTrim.Replace("Артикул: ","");
-                articleToTrim = articleToTrim.Replace("все","");
+                articleToTrim = articleToTrim.Replace("Артикул: ", "");
+                articleToTrim = articleToTrim.Replace("все", "");
                 article.Add(articleToTrim);
 
                 var orderCodeNod = item.SelectSingleNode(".//div[@class='decr']//div//div[@class='info']//small");
                 string orderCodeToTrim = orderCodeNod.InnerText;
-                orderCodeToTrim = orderCodeToTrim.Replace("Код для заказа: ","");
+                orderCodeToTrim = orderCodeToTrim.Replace("Код для заказа: ", "");
                 orderCode.Add(orderCodeToTrim);
 
                 var vendorNod = item.SelectSingleNode(".//div[@class='decr']//div//div[@class='info']//span[@class='text']");
                 string vendorToTrim = vendorNod.InnerText;
-                vendorToTrim = vendorToTrim.Replace("                    Производитель: ","");
+                vendorToTrim = vendorToTrim.Replace("                    Производитель: ", "");
                 vendor.Add(vendorToTrim);
-                
+
 
                 var priceNod = item.SelectSingleNode(".//div[@class='right-block']//div[@class='price']//b[@class='price-internet']");
                 price.Add(priceNod.InnerText);
