@@ -32,6 +32,7 @@ namespace Parser_for_AutoAll
                 Console.WriteLine("Код заказа " + parser.orderCode[i]);
                 Console.WriteLine("Производитель:" + parser.vendor[i]);
                 Console.WriteLine("Цена:\t" + parser.price[i]);
+                Console.WriteLine(parser.pictureLinks[i]);
             }
 
             data.name = parser.name;
