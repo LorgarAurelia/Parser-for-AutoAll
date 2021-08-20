@@ -60,7 +60,6 @@ namespace Parser_for_AutoAll.Core.Parser
                 var priceNod = item.SelectSingleNode(".//div[@class='right-block']//div[@class='price']//b[@class='price-internet']");
                 price.Add(priceNod.InnerText);
 
-                //var pictureNod = item.SelectSingleNode(".//div[@class='image']//a//img").Attributes["data-src"].Value;
                 pictureLinks.Add(item.SelectSingleNode(".//div[@class='image']//a//img").Attributes["data-src"].Value);
             }
         }
