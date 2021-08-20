@@ -7,19 +7,19 @@ namespace Parser_for_AutoAll.Core.Parser
 {
     class DataSystemiser : SystemisedData
     {
-        private HtmlParser parser = new HtmlParser();
-        public SystemisedData data = new SystemisedData();
+        private readonly HtmlParser parser = new();
+        public SystemisedData data = new();
 
         public void Sytemiser() 
         {
             parser.ParseHtml();
 
-            data.name = parser.name;
-            data.aricle = parser.article;
-            data.orderCode = parser.orderCode;
-            data.vendor = parser.vendor;
-            data.price = parser.price;
-            data.pictureLink = parser.pictureLinks;
+            data.Name = parser.name;
+            data.Aricle = parser.article;
+            data.OrderCode = parser.orderCode;
+            data.Vendor = parser.vendor;
+            data.Price = parser.price;
+            data.PictureLink = parser.pictureLinks;
         }
     }
 }

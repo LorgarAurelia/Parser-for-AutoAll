@@ -6,20 +6,20 @@ namespace Parser_for_AutoAll.Core.Parser
 {
     class HtmlParser : WebClient
     {
-        private string errorOfEmptyTable = "Пришла пустая таблица";
-        private string errorOfEmptyHtml = "Пришёл пустой HTML";
+        private readonly string errorOfEmptyTable = "Пришла пустая таблица";
+        private readonly string errorOfEmptyHtml = "Пришёл пустой HTML";
 
-        public List<string> name = new List<string>();
-        public List<string> article = new List<string>();
-        public List<string> orderCode = new List<string>();
-        public List<string> vendor = new List<string>();
-        public List<string> price = new List<string>();
-        public List<string> pictureLinks = new List<string>();
+        public List<string> name = new();
+        public List<string> article = new();
+        public List<string> orderCode = new();
+        public List<string> vendor = new();
+        public List<string> price = new();
+        public List<string> pictureLinks = new();
         public void ParseHtml()
         {
             var html = ConnectionToSite();
 
-            HtmlAgilityPack.HtmlDocument document = new HtmlAgilityPack.HtmlDocument();
+            HtmlAgilityPack.HtmlDocument document = new();
             if (!string.IsNullOrEmpty(html))
                 document.LoadHtml(html);
             else

@@ -4,7 +4,7 @@ namespace Parser_for_AutoAll.Core.Parser
 {
     class WebClient
     {
-        private string url = "https://www.avtoall.ru/bmw/";
+        private readonly string url = "https://www.avtoall.ru/bmw/";
         public string ConnectionToSite()
         {
             HttpClientHandler handler = new HttpClientHandler { AllowAutoRedirect = false, AutomaticDecompression = System.Net.DecompressionMethods.Deflate | System.Net.DecompressionMethods.GZip | System.Net.DecompressionMethods.GZip };

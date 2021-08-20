@@ -5,8 +5,8 @@ namespace Parser_for_AutoAll.Core.Parser
 {
     class PictureLoader : DataSystemiser
     {
-        System.Net.WebClient client = new();
-        DataSystemiser systemData = new();
+        readonly System.Net.WebClient client = new();
+        readonly DataSystemiser systemData = new();
 
         public void Loader() 
         {
@@ -19,13 +19,13 @@ namespace Parser_for_AutoAll.Core.Parser
                 Directory.CreateDirectory(path);
             }
 
-            for (int counter = 0; counter < systemData.data.pictureLink.Count; counter++)
+            for (int counter = 0; counter < systemData.data.PictureLink.Count; counter++)
             {
-                if (systemData.data.pictureLink[counter] != "/pic/no_photo_150.jpg")
+                if (systemData.data.PictureLink[counter] != "/pic/no_photo_150.jpg")
                 {
                     client.Headers.Add("User-Agent", "C# App");
                     fileName = path + @"\" +Convert.ToString(counter) + ".jpg";
-                    client.DownloadFile(systemData.data.pictureLink[counter], fileName);
+                    client.DownloadFile(systemData.data.PictureLink[counter], fileName);
                 }
             }
         }
