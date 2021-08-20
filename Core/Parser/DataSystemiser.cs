@@ -7,7 +7,7 @@ namespace Parser_for_AutoAll.Core.Parser
 {
     class DataSystemiser : SystemisedData
     {
-        private readonly HtmlParser parser = new();
+        public readonly HtmlParser parser = new();
         public SystemisedData data = new();
 
         public void Sytemiser() 

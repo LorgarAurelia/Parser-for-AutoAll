@@ -11,5 +11,7 @@ namespace Parser_for_AutoAll.Core.Parser
         public List<string> Vendor { get; set; }
         public List<string> Price { get; set; }
         public List<string> PictureLink { get; set; }
+
+        public List<string> PathToSavedPicture = new();
     }
 }

@@ -4,14 +4,16 @@ namespace Parser_for_AutoAll.Core.Parser
 {
     class WebClient
     {
-        private readonly string url = "https://www.avtoall.ru/bmw/";
+        public readonly string url = "https://www.avtoall.ru/bmw/";
+        public readonly string clientHeaderAgent = "User-Agent";
+        public readonly string clientHeaderApp = "C# App";
         public string ConnectionToSite()
         {
             HttpClientHandler handler = new HttpClientHandler { AllowAutoRedirect = false, AutomaticDecompression = System.Net.DecompressionMethods.Deflate | System.Net.DecompressionMethods.GZip | System.Net.DecompressionMethods.GZip };
 
             var client = new HttpClient(handler);
 
-            client.DefaultRequestHeaders.Add("User-Agent", "C# App");
+            client.DefaultRequestHeaders.Add(clientHeaderAgent, clientHeaderApp);
 
             var response = client.GetAsync(url).Result;
 
