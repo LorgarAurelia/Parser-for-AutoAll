@@ -1,9 +1,6 @@
-﻿using Newtonsoft.Json;
-using Parser_for_AutoAll.Core.Parser;
-using Parser_for_AutoAll.Core.SQL;
+﻿using Parser_for_AutoAll.Core.SQL;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
+
 
 namespace Parser_for_AutoAll
 {
@@ -11,14 +8,10 @@ namespace Parser_for_AutoAll
     {
         static void Main(string[] args)
         {
-
-            /*var connect = new ConnectionToDB();
-            connect.OpenConnection();*/
             var inserter = new InsertIntoDB();
             inserter.Insert();
 
-
-
+            Console.WriteLine("Нажмите любую клавишу для завершения программы.");
             Console.ReadKey();
         }
     }
