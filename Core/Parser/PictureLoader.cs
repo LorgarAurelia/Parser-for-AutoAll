@@ -6,8 +6,8 @@ namespace Parser_for_AutoAll.Core.Parser
     class PictureLoader : DataSystemiser
     {
         readonly System.Net.WebClient client = new();
-        readonly DataSystemiser systemData = new();
-        private string emptyPicture = "no photo";
+        public DataSystemiser systemData = new();
+        private readonly string emptyPicture = "no photo";
 
         public void Loader() 
         {
