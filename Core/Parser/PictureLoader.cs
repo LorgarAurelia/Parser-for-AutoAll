@@ -12,7 +12,7 @@ namespace Parser_for_AutoAll.Core.Parser
         public void Loader() 
         {
             parsedData.ParseHtml();
-            ConnectionToSite networkParams = new();
+            NetworkParamaters networkParams = new();
             string fileName;
             string path = @"c:\picture";
             if (!Directory.Exists(path))
