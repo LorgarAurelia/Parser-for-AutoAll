@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -10,7 +6,7 @@ namespace Parser_for_AutoAll.Core.SQL
 {
     class ConnectionToDB
     {
-        private readonly string sqlParams = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename='D:\Study\Parser for AutoAll\AutoPatrs.mdf';User ID=AdminUser;Password=Lorgar17";
+        private readonly string sqlParams = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Proger1\source\repos\Parser-for-AutoAll\Parts.mdf;User ID=UserAdmin;Password=Lorgar17";
         public SqlConnection sqlConnection;
         
         public void OpenConnection() 
@@ -25,3 +21,4 @@ namespace Parser_for_AutoAll.Core.SQL
         }
     }
 }
+

@@ -6,6 +6,7 @@ namespace Parser_for_AutoAll.Core.SQL
 {
     class InsertIntoDB : ConnectionToDB
     {
+        private readonly ErrorMessages errors = new();
         public void Insert() 
         {
             var parse = new PictureLoader();
@@ -15,11 +16,16 @@ namespace Parser_for_AutoAll.Core.SQL
             connection.OpenConnection();
             string query;
 
-            for (int i = 0; i < parse.systemData.data.Name.Count; i++)
+            for (int i = 0; i < parse.parsedData.savedData.Name.Count; i++)
             {
-                query = "INSERT INTO [Parts] (name, article, orderCode, vendor, price, pathToPicture) VALUES (N'" + parse.systemData.data.Name[i] + "', N'" + parse.systemData.data.Aricle[i] + "', N'" + parse.systemData.data.OrderCode[i] + "', N'" + parse.systemData.data.Vendor[i] + "', N'" + parse.systemData.data.Price[i] + "', N'" + parse.systemData.data.PathToSavedPicture[i] + "')";
+                if (parse.parsedData.savedData.Name[i] == errors.badValue || parse.parsedData.savedData.Article[i] == errors.badValue || parse.parsedData.savedData.OrderCode[i] == errors.badValue || parse.parsedData.savedData.Vendor[i] == errors.badValue || parse.parsedData.savedData.Price[i] == errors.badValue)
+                {
+                    continue;
+                }
+                query = "INSERT INTO [Parts] (name, article, orderCode, vendor, price, pathToPicture) VALUES (N'" + parse.parsedData.savedData.Name[i] + "', N'" + parse.parsedData.savedData.Article[i] + "', N'" + parse.parsedData.savedData.OrderCode[i] + "', N'" + parse.parsedData.savedData.Vendor[i] + "', N'" + parse.parsedData.savedData.Price[i] + "', N'" + parse.parsedData.savedData.PathToSavedPicture[i] + "')";
 
                 SqlCommand command = new SqlCommand(query, connection.sqlConnection);
+                command.ExecuteNonQuery();
             }
 
             query = "SELECT * FROM Parts";

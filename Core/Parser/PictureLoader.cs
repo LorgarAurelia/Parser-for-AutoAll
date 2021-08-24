@@ -3,16 +3,16 @@ using System.IO;
 
 namespace Parser_for_AutoAll.Core.Parser
 {
-    class PictureLoader : DataSystemiser
+    class PictureLoader 
     {
         readonly System.Net.WebClient client = new();
-        public DataSystemiser systemData = new();
+        public HtmlParser parsedData = new();
         private readonly string emptyPicture = "no photo";
 
         public void Loader() 
         {
-            systemData.Sytemiser();
-            var networkParams = new WebClient();
+            parsedData.ParseHtml();
+            ConnectionToSite networkParams = new();
             string fileName;
             string path = @"c:\picture";
             if (!Directory.Exists(path))
@@ -20,16 +20,16 @@ namespace Parser_for_AutoAll.Core.Parser
                 Directory.CreateDirectory(path);
             }
 
-            for (int counter = 0; counter < systemData.data.PictureLink.Count; counter++)
+            for (int counter = 0; counter < parsedData.savedData.PictureLink.Count; counter++)
             {
-                if (systemData.data.PictureLink[counter] != "/pic/no_photo_150.jpg")
+                if (parsedData.savedData.PictureLink[counter] != "/pic/no_photo_150.jpg")
                 {
                     client.Headers.Add(networkParams.clientHeaderAgent, networkParams.clientHeaderApp);
                     fileName = path + @"\" +Convert.ToString(counter) + ".jpg";
-                    client.DownloadFile(systemData.data.PictureLink[counter], fileName);
-                    systemData.data.PathToSavedPicture.Add(fileName);
-                } else if(systemData.data.PictureLink[counter] == "/pic/no_photo_150.jpg")
-                    systemData.data.PathToSavedPicture.Add(emptyPicture);
+                    client.DownloadFile(parsedData.savedData.PictureLink[counter], fileName);
+                    parsedData.savedData.PathToSavedPicture.Add(fileName);
+                } else if(parsedData.savedData.PictureLink[counter] == "/pic/no_photo_150.jpg")
+                    parsedData.savedData.PathToSavedPicture.Add(emptyPicture);
             }
         }
     }
